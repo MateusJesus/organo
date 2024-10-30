@@ -1,0 +1,19 @@
+.times {
+    text-align: center;
+    background-color: #D9F7E9;
+    padding: .5em;
+}
+
+.times h3 {
+    padding-bottom: .3em;
+    border-bottom: solid 4px;
+    display: inline-block;
+}
+
+.colaboradores{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    flex-wrap: wrap;
+}
