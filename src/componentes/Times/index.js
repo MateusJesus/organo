@@ -5,6 +5,7 @@ const Times = (props) => {
     const cor2 = { backgroundColor: props.cor2 }
     return (
         props.colaboradores.length > 0 && <section className='times' style={cor2}>
+            <input onChange={event => props.mudarCor(event.target.value, props.nome)} className='corTime' type='color' value={props.cor1}></input>
             <h3 style={{ borderColor: props.cor1 }}>
                 {props.nome}
             </h3>
@@ -16,7 +17,7 @@ const Times = (props) => {
                         nome={colaborador.nome}
                         cargo={colaborador.cargo}
                         imagem={colaborador.imagem} 
-                        aoDeletar={props.aoDeletar} />
+                        aoDeletar={event => {props.aoDeletar(colaborador.nome+index)}} />
                 })}
             </div>
         </section>
