@@ -1,11 +1,13 @@
 .colaborador {
     width: 280px;
+    position: relative;
 }
 
 .colaborador .cabecalho {
     background-color:  #F0F0F0;
     border-radius: 10px 10px 0px 0px;
 }
+
 .colaborador img {
     width: 100px;
     border-radius: 50%;
@@ -34,4 +36,19 @@
     line-height: 22px;
     color: #212121;
     padding: 0 16px;
+}
+
+.deletar {
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    font-size: 30px;
+    background-color: #ffffff;
+    border-radius: 100%;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.deletar:hover{
+    color: #6278F7;
 }

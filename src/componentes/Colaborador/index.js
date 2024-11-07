@@ -1,8 +1,10 @@
+import { CiTrash } from "react-icons/ci";
 import './Colaborador.css'
 
 const Colaborador = (props) => {
     return(
         <div className='colaborador'>
+            <CiTrash className='deletar' onClick={props.aoDeletar} />
             <div className='cabecalho' style={{backgroundColor: props.bg}}>
                 <img src={props.imagem} alt={`imagem do colaborador ${props.nome}`} />
             </div>
