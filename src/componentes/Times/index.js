@@ -2,17 +2,17 @@ import Colaborador from '../Colaborador'
 import './Times.css'
 
 const Times = (props) => {
-    const cor2 = { backgroundColor: props.cor2 }
+    const cor = { backgroundColor: props.cor+'B3' }
     return (
-        props.colaboradores.length > 0 && <section className='times' style={cor2}>
-            <input onChange={event => props.mudarCor(event.target.value, props.nome)} className='corTime' type='color' value={props.cor1}></input>
-            <h3 style={{ borderColor: props.cor1 }}>
+        props.colaboradores.length > 0 && <section className='times' style={cor}>
+            <input onChange={event => props.mudarCor(event.target.value, props.nome)} className='corTime' type='color' value={props.cor}></input>
+            <h3 style={{ borderColor: props.cor }}>
                 {props.nome}
             </h3>
             <div className='colaboradores'>
                 {props.colaboradores.map((colaborador, index) => {
                     return <Colaborador
-                        bg={props.cor1}
+                        bg={props.cor}
                         key={colaborador.nome + index}
                         nome={colaborador.nome}
                         cargo={colaborador.cargo}

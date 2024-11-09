@@ -8,38 +8,31 @@ function App() {
   const [times, setTime] = useState([
     {
       nome: 'Programação',
-      cor1: '#57C278',
-      cor2: '#D9F7E9'
+      cor: '#57C278'
     },
     {
       nome: 'Front End',
-      cor1: '#82CFFA',
-      cor2: '#E8F8FF'
+      cor: '#82CFFA'
     },
     {
       nome: 'Data Science',
-      cor1: '#A6D157',
-      cor2: '#F0F8E2'
+      cor: '#A6D157'
     },
     {
       nome: 'Devops',
-      cor1: '#E06B69',
-      cor2: '#FDE7E8'
+      cor: '#E06B69'
     },
     {
       nome: 'UX e Design',
-      cor1: '#DB6EBF',
-      cor2: '#FAE9F5'
+      cor: '#DB6EBF'
     },
     {
       nome: 'Mobile',
-      cor1: '#FFBA05',
-      cor2: '#FFF5D9'
+      cor: '#FFBA05'
     },
     {
       nome: 'Inovação e Gestão',
-      cor1: '#FF8A29',
-      cor2: '#FFEEDF'
+      cor: '#FF8A29'
     }
   ])
 
@@ -60,7 +53,7 @@ function App() {
   function mudarCorTime(cor, nome) {
     setTime(times.map(time => {
       if (time.nome === nome) {
-        time.cor1 = cor
+        time.cor = cor
       }
       return time
     }))
@@ -80,8 +73,7 @@ function App() {
         aoDeletar={deletarColaborador}
         key={time.nome}
         nome={time.nome}
-        cor1={time.cor1}
-        cor2={time.cor2}
+        cor={time.cor}
         colaboradores={colaboradores.filter(colaborador => colaborador.time === time.nome)}
       />)}
     </div>
