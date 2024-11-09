@@ -10,14 +10,14 @@ const Times = (props) => {
                 {props.nome}
             </h3>
             <div className='colaboradores'>
-                {props.colaboradores.map((colaborador, index) => {
+                {props.colaboradores.map((colaborador) => {
                     return <Colaborador
                         bg={props.cor}
-                        key={colaborador.nome + index}
+                        key={colaborador.id}
                         nome={colaborador.nome}
                         cargo={colaborador.cargo}
                         imagem={colaborador.imagem} 
-                        aoDeletar={event => {props.aoDeletar(colaborador.nome+index)}} />
+                        aoDeletar={event => {props.aoDeletar(colaborador.id)}} />
                 })}
             </div>
         </section>
