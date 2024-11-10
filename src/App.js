@@ -28,6 +28,7 @@ function App() {
       cor: '#E06B69'
     },
     {
+      id: uuidv4(),
       nome: 'UX e Design',
       cor: '#DB6EBF'
     },
@@ -50,6 +51,10 @@ function App() {
     setColaboradores([...colaboradores, novoColaborador])
   }
 
+  function cadastrarTime(time) {
+    setTime([...times, { id: uuidv4(), ...time  }])
+  }
+
   function deletarColaborador(id) {
     colaboradores.filter(colaborador => {
       if (colaborador.id === id) {
@@ -58,9 +63,9 @@ function App() {
     })
   }
 
-  function mudarCorTime(cor, nome) {
+  function mudarCorTime(cor, id) {
     setTime(times.map(time => {
-      if (time.nome === nome) {
+      if (time.id === id) {
         time.cor = cor
       }
       return time
@@ -71,18 +76,20 @@ function App() {
     <div className="App">
       <Banner />
       <Formulario
-        times={times.map(time => time.nome)}
+        cadastrarTime={cadastrarTime}
+        times={times.map(time => ({id:time.id,nome:time.nome}))}
         aoColaboradorCadastrado={
           colaborador => aoNovoColaboradorAdicionado(colaborador)
         }
       />
-      {times.map(time => <Times
+      {times.map((time,index) => <Times
+        key={time.nome+index}
         mudarCor={mudarCorTime}
         aoDeletar={deletarColaborador}
-        key={time.nome}
+        idTime={time.id}
         nome={time.nome}
         cor={time.cor}
-        colaboradores={colaboradores.filter(colaborador => colaborador.time === time.nome)}
+        colaboradores={colaboradores.filter(colaborador => colaborador.time === time.id)}
       />)}
     </div>
   );
