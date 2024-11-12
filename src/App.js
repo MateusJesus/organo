@@ -47,21 +47,18 @@ function App() {
   const [colaboradores, setColaboradores] = useState([])
 
   const aoNovoColaboradorAdicionado = (colaborador) => {
-    const novoColaborador = { id: uuidv4(), ...colaborador }
+    const novoColaborador = { favorito: false, id: uuidv4(), ...colaborador }
     setColaboradores([...colaboradores, novoColaborador])
   }
 
   function cadastrarTime(time) {
-    setTime([...times, { id: uuidv4(), ...time  }])
+    setTime([...times, { id: uuidv4(), ...time }])
   }
 
   function deletarColaborador(id) {
-    colaboradores.filter(colaborador => {
-      if (colaborador.id === id) {
-        setColaboradores(colaboradores.filter(colaborador => colaborador.id !== id));
-      }
-    })
+    setColaboradores(colaboradores.filter(colaborador => colaborador.id !== id));
   }
+
 
   function mudarCorTime(cor, id) {
     setTime(times.map(time => {
@@ -72,25 +69,34 @@ function App() {
     }))
   }
 
+  function aoFavoritar(id) {
+    setColaboradores(colaboradores.map(colaborador => {
+      if (colaborador.id === id) {
+        colaborador.favorito = !colaborador.favorito
+      }
+      return colaborador
+    }))
+  }
+
   return (
     <div className="App">
       <Banner />
       <Formulario
         cadastrarTime={cadastrarTime}
-        times={times.map(time => ({id:time.id,nome:time.nome}))}
+        times={times.map(time => ({ id: time.id, nome: time.nome }))}
         aoColaboradorCadastrado={
           colaborador => aoNovoColaboradorAdicionado(colaborador)
         }
       />
-      {times.map((time,index) => <Times
-        key={time.nome+index}
-        mudarCor={mudarCorTime}
-        aoDeletar={deletarColaborador}
-        idTime={time.id}
-        nome={time.nome}
-        cor={time.cor}
-        colaboradores={colaboradores.filter(colaborador => colaborador.time === time.id)}
-      />)}
+      {times.map((time, index) =>
+        <Times
+          favoritar={aoFavoritar}
+          key={time.nome + index}
+          mudarCor={mudarCorTime}
+          aoDeletar={deletarColaborador}
+          time={time}
+          colaboradores={colaboradores.filter(colaborador => colaborador.time === time.id)}
+        />)}
     </div>
   );
 }

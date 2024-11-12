@@ -2,27 +2,29 @@ import Colaborador from '../Colaborador'
 import './Times.css'
 
 const Times = (props) => {
-    const cor = { backgroundColor: props.cor + 'B3' }
+    const cor = { backgroundColor: props.time.cor + '80' }
     return (
         props.colaboradores.length > 0 &&
         <section className='times' style={cor}>
             <input
-                onChange={event => props.mudarCor(event.target.value, props.idTime)} className='corTime'
+                onChange={event => props.mudarCor(event.target.value, props.time.id)} className='corTime'
                 type='color'
-                value={props.cor}>
+                value={props.time.cor}>
             </input>
-            <h3 style={{ borderColor: props.cor }}>
-                {props.nome}
+            <h3 style={{ borderColor: props.time.cor }}>
+                {props.time.nome}
             </h3>
             <div className='colaboradores'>
                 {props.colaboradores.map((colaborador) => {
-                    return <Colaborador
-                        bg={props.cor}
-                        key={colaborador.id}
-                        nome={colaborador.nome}
-                        cargo={colaborador.cargo}
-                        imagem={colaborador.imagem}
-                        aoDeletar={() => { props.aoDeletar(colaborador.id) }} />
+                    return (
+                        <Colaborador
+                            favoritar={props.favoritar}
+                            bg={props.time.cor}
+                            colaborador={colaborador}
+                            key={colaborador.id}
+                            aoDeletar={() => { props.aoDeletar(colaborador.id) }}
+                        />
+                    )
                 })}
             </div>
         </section>
