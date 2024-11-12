@@ -10,7 +10,6 @@ const ListaSuspensa = (props) => {
                     return <option key={item.id} value={item.id}>{item.nome}</option>
                 })}
             </select>
-
         </div>
     )
 }

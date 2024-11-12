@@ -68,7 +68,7 @@ const Formulario = (props) => {
             <form
                 onSubmit={(event) => {
                     event.preventDefault()
-                    props.cadastrarTime({ nome: nomeTime, cor: corTime })
+                    props.cadastrarTime({ nome: nomeTime, cor: corTime === '' ? "#ffaabb" : corTime })
                 }}
             >
                 <h2>Preencha os dados para criar um novo time</h2>
