@@ -120,8 +120,6 @@
       "imagem": "https://randomuser.me/api/portraits/men/8.jpg",
       "time": "67ed8a1f-82f6-4a41-ad2a-4b5caf292c0e"
     },
-    
-
     {
       "favorito": false,
       "id": "a1d2b3c4-0004-0004-0004-000000000001",
@@ -281,6 +279,14 @@
       "cargo": "Analista de Inovação",
       "imagem": "https://randomuser.me/api/portraits/women/17.jpg",
       "time": "7c2e07e4-00cf-4f52-8876-0d620a93ea67"
+    },
+    {
+      "id": "fe0e9496-11a4-4c9d-bc96-1d8032381c96",
+      "favorito": false,
+      "nome": "Mateus",
+      "cargo": "Gay",
+      "imagem": "https://github.com/mateusjesus.png",
+      "time": "f2365039-49a0-4106-86c4-dfeba9701e9f"
     }
   ],
   "times": [
@@ -318,6 +324,11 @@
       "id": "7c2e07e4-00cf-4f52-8876-0d620a93ea67",
       "nome": "Inovação e Gestão",
       "cor": "#FF8A29"
+    },
+    {
+      "id": "f2365039-49a0-4106-86c4-dfeba9701e9f",
+      "nome": "LGBTQIA+",
+      "cor": "#ffa8e8"
     }
   ]
 }

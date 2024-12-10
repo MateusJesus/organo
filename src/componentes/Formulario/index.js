@@ -83,7 +83,7 @@ const Formulario = (props) => {
                 <Campo
                     type='color'
                     obrigatorio={true}
-                    label="Cor"
+                    label="Cor do time"
                     placeholder="Digite sua cor"
                     valor={corTime === '' ? "#ffaabb" : corTime}
                     aoAlterado={valor => setCorTime(valor)}

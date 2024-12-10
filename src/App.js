@@ -7,44 +7,6 @@ import Campo from './componentes/Campo';
 
 function App() {
 
-  // const [times, setTime] = useState([
-  //   {
-  //     id: uuidv4(),
-  //     nome: 'Programação',
-  //     cor: '#57C278'
-  //   },
-  //   {
-  //     id: uuidv4(),
-  //     nome: 'Front End',
-  //     cor: '#82CFFA'
-  //   },
-  //   {
-  //     id: uuidv4(),
-  //     nome: 'Data Science',
-  //     cor: '#A6D157'
-  //   },
-  //   {
-  //     id: uuidv4(),
-  //     nome: 'Devops',
-  //     cor: '#E06B69'
-  //   },
-  //   {
-  //     id: uuidv4(),
-  //     nome: 'UX e Design',
-  //     cor: '#DB6EBF'
-  //   },
-  //   {
-  //     id: uuidv4(),
-  //     nome: 'Mobile',
-  //     cor: '#FFBA05'
-  //   },
-  //   {
-  //     id: uuidv4(),
-  //     nome: 'Inovação e Gestão',
-  //     cor: '#FF8A29'
-  //   }
-  // ])
-
   const [times, setTime] = useState([])
 
   const [colaboradores, setColaboradores] = useState([])
@@ -68,20 +30,45 @@ function App() {
     .then((response) => response.json())
     .then((dados) => {
       const resultado = dados.filter((colaborador) =>
-        colaborador.nome.toLowerCase().includes(pesquisa.toLowerCase())
+        colaborador.cargo.toLowerCase().includes(pesquisa.toLowerCase())
       );
       setColaboradores(resultado);
     })
     .catch((error) => console.error('Erro na pesquisa:', error));
-  }, [pesquisa])
+  }, [pesquisa])  
 
   const aoNovoColaboradorAdicionado = (colaborador) => {
-    const novoColaborador = { favorito: false, id: uuidv4(), ...colaborador }
-    setColaboradores([...colaboradores, novoColaborador])
-  }
+    const novoColaborador = { favorito: false, id: uuidv4(), ...colaborador };
+  
+    fetch('http://localhost:8080/colaboradores', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(novoColaborador),
+    })
+      .then((response) => response.json())
+      .then((dados) => {
+        setColaboradores((prevColaboradores) => [...prevColaboradores, dados]);
+      })
+      .catch((error) => console.error('Erro ao adicionar colaborador:', error));
+  };
 
   function cadastrarTime(time) {
-    setTime([...times, { id: uuidv4(), ...time }])
+    const novoTime = { id: uuidv4(), ...time };
+  
+    fetch('http://localhost:8080/times', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(novoTime),
+    })
+      .then((response) => response.json())
+      .then((dados) => {
+        setTime((prevTimes) => [...prevTimes, dados]);
+      })
+      .catch((error) => console.error('Erro ao cadastrar time:', error));
   }
 
   function deletarColaborador(id) {
