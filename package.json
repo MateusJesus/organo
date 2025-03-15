@@ -15,7 +15,7 @@
     "json-server": "^0.17.0"
   },
   "scripts": {
-    "start": "json-server --watch db/db.json --port 8080",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
