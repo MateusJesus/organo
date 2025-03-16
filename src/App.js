@@ -4,13 +4,14 @@ import Formulario from "./componentes/Formulario";
 import Times from "./componentes/Times";
 import { v4 as uuidv4 } from "uuid";
 import Campo from "./componentes/Campo";
+import Modal from "./componentes/Modal";
+import Warning from "./componentes/Warning";
 
 const apiKey = process.env.REACT_APP_API_PASSWORD;
 
 function App() {
-  
   const [loading, setLoading] = useState(true);
-  
+
   const [times, setTime] = useState([]);
 
   const [colaboradores, setColaboradores] = useState([]);
@@ -29,7 +30,7 @@ function App() {
       .then((dado) => {
         setColaboradores(dado.colaboradores);
         setTime(dado.times);
-        setLoading(false)
+        setLoading(false);
       });
   }, []);
 
@@ -97,6 +98,7 @@ function App() {
 
   return (
     <div className="App">
+      <Warning />
       <Banner />
       <Formulario
         cadastrarTime={cadastrarTime}
